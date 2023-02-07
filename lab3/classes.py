@@ -1,39 +1,131 @@
-class MyClass:
-    x = 5
+# class MyClass:
+#     x = 5
 
 
-p1 = MyClass()
-print(p1.x)
+# p1 = MyClass()
+# print(p1.x)
 
 
-#Constructor and str methods
-class Person:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
+# #Constructor and str methods
+# class Person:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
 
-    def __str__(self):
-        return f"{self.name}({self.age})"
+#     def __str__(self):
+#         return f"{self.name}({self.age})"
 
-    def myfunc(self):
-        print("Hello my name is " + self.name)
+#     def myfunc(self):
+#         print("Hello my name is " + self.name)
 
-p1 = Person("John", 36)
+# p1 = Person("John", 36)
 
-print(p1.name)
-print(p1.age)
-print(p1)
-p1.myfunc()
+# print(p1.name)
+# print(p1.age)
+# print(p1)
+# p1.myfunc()
 
-#Modify and delete
-p1.age = 40
-del p1.age
-del p1
+# #Modify and delete
+# p1.age = 40
+# del p1.age
+# del p1
 
-#Pass
-class Person:
-  pass
+# #Pass
+# class Person:
+#   pass
 
 
+import math
 
+
+#*****************
+
+class IOHandler:
+    def __init__(self) -> None:
+        self.userInput=""
+
+    def getString(self):
+        self.userInput = input()
+
+    def printString(self):
+        print(self.userInput)
+
+
+#***************
+
+class Shape:
+    def area(self):
+        return 0
+    
+class Square(Shape):
+    def __init__(self, length:int) -> None:
+        super().__init__()
+        self.length = length
+
+    def area(self):
+        return self.length**2
+    
+class Rectangle(Shape):
+    def __init__(self, length, width) -> None:
+        super().__init__()
+        self.width = width
+        self.length = length
+
+    def area(self):
+        return self.width*self.length
+    
+
+
+#****************
+
+class Point:
+    def __init__(self, x, y) -> None:
+        self.x = x
+        self.y = y
+
+    def show(self):
+        return f"X: {self.x}, Y: {self.y}"
+    
+    def move(self, x, y):
+        self.x+=x
+        self.y+=y
+
+    def dist(self):
+        return math.sqrt(self.x**2+self.y**2)
+    
+
+class Account:
+    def __init__(self, owner) -> None:
+        self.owner = owner
+        self.balance = 0
+
+    def __showBalance(self):
+       print(f"{self.owner}, your current balance is {self.balance}\n")
+
+    def deposit(self, balance):
+        self.balance+=balance
+        self.__showBalance()
+
+    def withdraw(self, amount):
+        if self.balance - amount >= 0:
+            self.balance-=amount
+            self.__showBalance()
+        else:
+            print(f"You cannot withdraw {amount}")
+            self.__showBalance()
+
+
+#*******************
+def isPrime(num: int):
+  for i in range(2, int(math.sqrt(num))+1):
+    if num % i == 0:
+      return False
+  return True
+
+
+items = [1,2,3,4,5,6,7,8,9,10]
+items = filter(lambda x: isPrime(x), items)
+print([i for i in items])
+
+    
 
