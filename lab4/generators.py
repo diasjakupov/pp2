@@ -44,7 +44,10 @@ def getSquaresInRange(a: int, b: int):
         a += 1
 
 
-
-
-
+# 5) Count down from a to b
+def countDownFromAToB(a: int, b: int):
+    while a <= b:
+        yield b
+        b -= 1
+# print(*[i for i in countDownFromAToB(2, 8)], sep=",")
 
